@@ -5,16 +5,17 @@ import s from'./Feedback.module.css';
 const FeedbackOptions = ({options, onLeaveFeedback}) => (
 
     <div className={s.ButtonStyle}>
-           <button className={s.Button} type="button" onClick={onLeaveFeedback.goodFeedbackIncrease}>{ options[0]}</button>
-           <button className={s.Button} type="button" onClick={onLeaveFeedback.neutralFeedbackIncrease}>{ options[1]}</button>
-           <button className={s.Button} type="button" onClick={onLeaveFeedback.badFeedbackIncrease}>{ options[2]}</button> 
-         </div>
+        {options.map(option => (
+            <button key={option} className={s.Button} type="button" onClick={() => onLeaveFeedback(option)}>{option}</button> 
+        ))}
+      
+    </div>
   
 );
-
+ 
 FeedbackOptions.propTypes = {
     options: PropTypes.array,
-    onLeaveFeedback: PropTypes.object,
+    onLeaveFeedback: PropTypes.func,
 
 }
 
